@@ -1,4 +1,4 @@
-USAGE = 'Usage: calculator <principal> <interest> <term_years> <frequency>'.freeze
+USAGE = 'Usage: calculator <principal> <interest_rate> <term_years> <frequency>'.freeze
 
 # Holds information for Interest calculation
 class Interest
