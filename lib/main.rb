@@ -1,15 +1,15 @@
 USAGE = 'Usage: calculator <principal> <interest> <term_years> <frequency>'.freeze
 
-COMPOUNDING = {
-  'monthly': 12,
-  'quarterly': 4,
-  'annually': 1,
-  'maturity': -1,
-  'at_maturity': -1
-}.freeze
-
 # Holds information for Interest calculation
 class Interest
+  COMPOUNDING = {
+    'monthly': 12,
+    'quarterly': 4,
+    'annually': 1,
+    'maturity': -1,
+    'at_maturity': -1
+  }.freeze
+
   def initialize(principal, rate, term, frequency)
     @principal = principal.to_i
     @rate = rate.to_f
