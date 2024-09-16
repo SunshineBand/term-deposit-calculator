@@ -1,9 +1,5 @@
 USAGE = 'Usage: calculator <principal> <interest> <term_years> <frequency>'.freeze
 
-def get_compounded_interest(principal, rate, frequency_per_year, years)
-  (principal * ((1 + rate / frequency_per_year)**(frequency_per_year * years))).round
-end
-
 COMPOUNDING = {
   'monthly': 12,
   'quarterly': 4,
@@ -30,11 +26,18 @@ class Interest
 
   def compound
     if @frequency == -1
-      interest_earned = (@principal.to_i * (@rate.to_f / 100)) * @term.to_i
-      return (@principal.to_i + interest_earned).round
+      # Special case, at maturity has no compounding interest
+      interest_earned = (@principal * (@rate / 100)) * @term
+      return (@principal + interest_earned).round
     end
 
-    get_compounded_interest(@principal.to_i, @rate.to_f / 100, @frequency, @term.to_i)
+    formula(@principal, @rate / 100, @frequency, @term)
+  end
+
+  private
+
+  def formula(principal, rate, frequency_per_year, years)
+    (principal * ((1 + rate / frequency_per_year)**(frequency_per_year * years))).round
   end
 end
 
