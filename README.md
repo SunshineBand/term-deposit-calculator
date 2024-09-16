@@ -29,9 +29,11 @@ chmod +x ./main.rb
 ```
 
 Worst case you can use the provided Dockerfile 🐳
+Note: you cannot provide arguments from the cli with this, you must update the Dockerfile
 With the docker daemon running:
 ```sh
 docker build -t deposit .
+docker run deposit
 ```
 
 The program will give a quick usage summary however it is limited.
