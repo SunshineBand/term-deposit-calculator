@@ -27,4 +27,26 @@ describe 'main function' do
       end.to output(a_string_including(expected)).to_stdout
     end
   end
+
+  context 'when payment frequency is quarterly' do
+    it 'should compound interest 4 times in the year' do
+      input = ['10000', '1.10', '3', 'quarterly']
+      expected = '10335'
+
+      expect do
+        main input
+      end.to output(a_string_including(expected)).to_stdout
+    end
+  end
+
+  context 'when payment frequency is monthly' do
+    it 'should compound every month' do
+      input = ['10000', '1.10', '3', 'monthly']
+      expected = '10335'
+
+      expect do
+        main input
+      end.to output(a_string_including(expected)).to_stdout
+    end
+  end
 end

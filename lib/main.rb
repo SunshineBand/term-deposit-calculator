@@ -20,7 +20,11 @@ def main(inputs = ARGV)
     interest_earned = (amount.to_i * (interest.to_f / 100)) * term_in_years.to_i
     result = (amount.to_i + interest_earned).round
   when 'annually'
-    result = get_compounded_interest(amount.to_i, interest.to_f / 100, 1, 3).round
+    result = get_compounded_interest(amount.to_i, interest.to_f / 100, 1, term_in_years.to_i).round
+  when 'quarterly'
+    result = get_compounded_interest(amount.to_i, interest.to_f / 100, 4, term_in_years.to_i).round
+  when 'monthly'
+    result = get_compounded_interest(amount.to_i, interest.to_f / 100, 12, term_in_years.to_i).round
   end
 
   puts result
