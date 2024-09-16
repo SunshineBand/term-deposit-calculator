@@ -1,4 +1,4 @@
-USAGE = 'Usage: calculator <amount> <interest> <term_years> <frequency>'.freeze
+USAGE = 'Usage: calculator <princiap> <interest> <term_years> <frequency>'.freeze
 
 def get_compounded_interest(principal, rate, frequency_per_year, years)
   (principal * ((1 + rate / frequency_per_year)**(frequency_per_year * years))).round
@@ -31,14 +31,14 @@ end
 
 def main(inputs = ARGV)
   # potential new feature
-  return puts USAGE if inputs.empty?
+  return puts USAGE if inputs.empty? || inputs.size != 4
 
   amount = inputs[0]
   interest = inputs[1]
   term_in_years = inputs[2]
   frequency = inputs[3]
 
-  return puts USAGE unless Interest.new(amount, interest, term_in_years, frequency).valid?
+  return puts USAGE unless Interest.new(inputs[0], inputs[1], inputs[2], inputs[3]).valid?
 
   result = 'nope'
 

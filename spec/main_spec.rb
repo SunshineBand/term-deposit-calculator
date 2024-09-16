@@ -1,10 +1,15 @@
 require 'main'
 
 describe 'main function' do
-  context 'when no arguments are given' do
-    it 'should print help instructions' do
+  context 'cli argument validation for not enough arguments provided' do
+    it 'should print help instructions when no arguments' do
       expect do
         main []
+      end.to output(a_string_including(USAGE)).to_stdout
+    end
+    it 'should print help instructions when not enough arguments' do
+      expect do
+        main %w[123 12]
       end.to output(a_string_including(USAGE)).to_stdout
     end
   end
