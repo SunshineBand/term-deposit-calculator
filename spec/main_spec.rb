@@ -1,10 +1,20 @@
 require 'main'
 
 describe 'main function' do
-  it 'should print help instructions' do
-    expect do
-      main []
-    end.to output(a_string_including(USAGE)).to_stdout
+  context 'when no arguments are given' do
+    it 'should print help instructions' do
+      expect do
+        main []
+      end.to output(a_string_including(USAGE)).to_stdout
+    end
+  end
+
+  context 'amount validation' do
+    it 'should be permissive and coerce values down to an integer' do
+      expect do
+        main ['asdfa', '1.10', '3', 'annually']
+      end.to output(a_string_including(USAGE)).to_stdout
+    end
   end
 
   context 'when payment frequency is at_maturity' do
