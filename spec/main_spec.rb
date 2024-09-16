@@ -16,4 +16,15 @@ describe 'main function' do
       end.to output(a_string_including(expected)).to_stdout
     end
   end
+
+  context 'when payment frequency is annually' do
+    it 'should compound interest over the years of payment' do
+      input = ['10000', '1.10', '3', 'annually']
+      expected = '10334'
+
+      expect do
+        main input
+      end.to output(a_string_including(expected)).to_stdout
+    end
+  end
 end

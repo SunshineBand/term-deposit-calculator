@@ -2,6 +2,9 @@
 
 ## 🧠💭 Assumptions and Thoughts
 
+There are a couple approaches you could take to define the result for each frequency option.
+The one you choose depends on personal opinion on readability
+
 - Assume the user enters safe input initially, if there is time we can add input sanitization.
 - Assume rounding to nearest whole dollar is acceptable to the user
 
