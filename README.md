@@ -1,11 +1,55 @@
 # Take Home Code Exercise
 
+👋 Hi thanks for taking the time to review my submission!
+
+In an attempt to keep my time under the 2 hours max, I've spent more time on the README and as a result there
+are some missing improvements I would have enjoyed adding for this.
+Please take some time to take a look through the Assumptions and Thoughts section. The "Problem statement and
+initial information" section is only a copy of the problem statement's pdf, so feel free to stop reading there.
+
+## 🚧 Setup
+
+You will need `ruby` installed on your machine, I've included a `.ruby-version` file.
+
+You can get running with
+```sh
+bundle install
+ruby ./main.rb
+```
+
+And tests can be run with
+```sh
+bundle exec rspec
+```
+
+Alternatively you can use this as a binary with
+```sh
+chmod +x ./main.rb
+./main.rb <...inputs>
+```
+
+Worst case you can use the provided Dockerfile 🐳
+With the docker daemon running:
+```sh
+docker build -t deposit .
+```
+
+The program will give a quick usage summary however it is limited.
+
 ## 🧠💭 Assumptions and Thoughts
 
-- Input validation could use more work here and given more time this behaviour might have to be extracted
+- Assume rounding to nearest whole dollar is acceptable to the user
+- Input validation could use more work and given more time this behaviour might have to be extracted
 from the `Interest` class as it holds a few responsibilities at the moment. This is fine considering this
 is a small application, but as the complexity grows the user input validation should evolve.
-- Assume rounding to nearest whole dollar is acceptable to the user
+- Dependency injection could have been used to simplify the tests where we are asserting output to stdout
+- The spec file has some duplication and given more time it would make sense to group the subject and
+vary the input with something like an rspec `:let` variable.
+- Only a few tests were included as an end to end test and the app would benefit from unittesting the specific
+details
+- All the code has been kept in the same file, because it's a small application this makes sense. The first
+change to be made as the features grow is to extract that `Interest` class into it's own file and also
+include additional unittests for it. This would be another way to improve the app's testing.
 
 There are a couple approaches you could take to define the result for each frequency option.
 The one you choose depends on personal opinion on readability. One path I did not take is to create
