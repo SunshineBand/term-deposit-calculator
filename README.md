@@ -3,6 +3,7 @@
 ## 🧠💭 Assumptions and Thoughts
 
 - Assume the user enters safe input initially, if there is time we can add input sanitization.
+- Assume rounding to nearest whole dollar is acceptable to the user
 
 ## Problem statement and initial information
 

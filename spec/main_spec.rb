@@ -6,4 +6,14 @@ describe 'main function' do
       main []
     end.to output(a_string_including(USAGE)).to_stdout
   end
+
+  context 'when payment frequency is at_maturity' do
+    it 'should pay interest only after the term length has completed' do
+      input = ['10000', '1.10', '3', 'at_maturity']
+      expected = '10330'
+      expect do
+        main input
+      end.to output(a_string_including(expected)).to_stdout
+    end
+  end
 end
