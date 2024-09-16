@@ -2,11 +2,31 @@
 
 ## 🧠💭 Assumptions and Thoughts
 
-There are a couple approaches you could take to define the result for each frequency option.
-The one you choose depends on personal opinion on readability
-
-- Assume the user enters safe input initially, if there is time we can add input sanitization.
+- Input validation could use more work here and given more time this behaviour might have to be extracted
+from the `Interest` class as it holds a few responsibilities at the moment. This is fine considering this
+is a small application, but as the complexity grows the user input validation should evolve.
 - Assume rounding to nearest whole dollar is acceptable to the user
+
+There are a couple approaches you could take to define the result for each frequency option.
+The one you choose depends on personal opinion on readability. One path I did not take is to create
+a factory with different frequency classes for calculating that frequencies' interest. Each child of
+Interest would have their own `compound` implementation where the frequency value is given to the
+equation. Something like below.
+
+```ruby
+class Interest
+    # ...
+    def compound
+        return generic_compounding_formula(..arguments)
+    end
+end
+
+class MonthlyInterest < Interest
+    def compound
+        return generic_compounding_formula(..arguments, frequency='monthly')
+    end
+end
+```
 
 ## Problem statement and initial information
 
